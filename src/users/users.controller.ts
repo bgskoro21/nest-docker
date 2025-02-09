@@ -24,10 +24,10 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  //   @Get(':id')
-  //   async findOne(@Param('id') id: string) {
-  //     return this.usersService.findOne(id);
-  //   }
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return this.usersService.findOne(id);
+  }
 
   //   @Put(':id')
   //   async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
