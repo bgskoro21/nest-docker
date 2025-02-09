@@ -7,6 +7,7 @@ services:
       - '3000:3000'
     environment:
       MONGO_URI: 'mongodb://bgskoro21:bagas123@nestmongo:27017/db_nestdocker?authSource=admin'
+      PORT: 3000
     networks:
       - nestdocker
     volumes:

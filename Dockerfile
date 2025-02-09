@@ -8,6 +8,10 @@ RUN npm install
 
 COPY . .
 
+RUN npm run build
+
+# Expose the application port
 EXPOSE 3000
 
-CMD ["npm", "run", "start:dev"]
+# Command to run the application
+CMD ["node", "dist/main"]
