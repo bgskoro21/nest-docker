@@ -10,6 +10,7 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { ApiResponse } from 'src/common/dtos/response.dto';
 
 @Controller('/api/users')
 export class UsersController {
@@ -22,7 +23,7 @@ export class UsersController {
 
   @Get()
   async findAll() {
-    return this.usersService.findAll();
+    return new ApiResponse(200, 'Success', await this.usersService.findAll());
   }
 
   @Get(':id')
