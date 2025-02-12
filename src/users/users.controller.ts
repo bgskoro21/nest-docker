@@ -6,11 +6,13 @@ import {
   Param,
   Delete,
   Put,
+  Query,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiResponse } from 'src/common/dtos/response.dto';
+import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
 @Controller('/api/users')
 export class UsersController {
@@ -22,8 +24,10 @@ export class UsersController {
   }
 
   @Get()
-  async findAll() {
-    return new ApiResponse(200, 'Success', await this.usersService.findAll());
+  async findAll(@Query() query: PaginationDto) {
+    const paginationDto = new PaginationDto(query.page, query.limit);
+    const result = await this.usersService.findAll(paginationDto);
+    return new ApiResponse(200, 'Success', result);
   }
 
   @Get(':id')
